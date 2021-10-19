@@ -9,6 +9,14 @@ const orderSchema = new mongoose.Schema({
   items: {
     type: Array,
   },
+  restaurantName: {
+    type: String,
+    required: true,
+  },
+  orderedAt: {
+    type: String,
+    required: true,
+  },
 });
 
 const Order = mongoose.model("Order", orderSchema);
@@ -16,6 +24,8 @@ const Order = mongoose.model("Order", orderSchema);
 const orderValidation = (order) => {
   const schema = Joi.object({
     bill: Joi.number().required(),
+    restaurantName: Joi.string().required(),
+    orderedAt: Joi.string().required(),
     items: Joi.array(),
   });
 
