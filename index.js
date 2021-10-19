@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 
+const order = require("./routes/order");
+
 app.use(express.json());
+
+app.use("/api/orders", order);
 
 app.get("/", (req, res) => {
   res.status(200).send("hey there, what do you wanna eat today?");
